@@ -19,10 +19,7 @@ class Result
         string minutesAsString = s.Substring(3, 2);
         string secondsAsString = s.Substring(6, 2);
 
-        int[] timeAsArray = time.Split(":").Select(x => int.Parse(x)).ToArray();
-        int hours = timeAsArray[0];
-        int minutes = timeAsArray[1];
-        int seconds = timeAsArray[2];
+        int hours = int.Parse(hoursAsString);
 
         if (hoursAsString == "12" && partOfTheDay == "AM")
         {
@@ -43,18 +40,6 @@ class Result
         {
             hoursAsString = hours.ToString();
         }
-
-
-        if (minutes >= 0 && minutes <= 9)
-        {
-            minutesAsString = $"0{minutes}";
-        }
-
-        if (seconds >= 0 && seconds <= 9)
-        {
-            secondsAsString = $"0{seconds}";
-        }
-
 
         return $"{hoursAsString}:{minutesAsString}:{secondsAsString}";
     }
